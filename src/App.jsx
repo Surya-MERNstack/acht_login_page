@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Form, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Aside } from './components/Aside';
@@ -14,6 +14,8 @@ import { Dashboard_1 } from './components/Dashboard_1';
 import { Dashboard_2 } from './components/Dashboard_2';
 import Login from './forms/Login';
 import { ToastContainer } from 'react-toastify';
+import Signup from './forms/Signup';
+import { ForgotPassword } from './forms/ForgotPassword';
  const App = () => {
   return (
     <>
@@ -30,6 +32,8 @@ import { ToastContainer } from 'react-toastify';
         <Route path='/kanban' element = {<Kanban/>}/>
         <Route path='/dashborad_1' element = {<Dashboard_1/>}/>
         <Route path='/dashborad_2' element = {<Dashboard_2/>}/>
+        <Route path='/signup' element = {<Signup/>}/>
+        <Route path='/forgotpassword' element = {<ForgotPassword/>}/>
         </Routes>      
     </BrowserRouter>
     <ToastContainer/>

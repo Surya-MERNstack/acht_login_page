@@ -13,7 +13,7 @@ export const Calender = () => {
     <>
       <CustomNavbar />
       <Aside />
-      <div className="wrapper">
+      <div className="wrapper" style={{ marginLeft  :"30rem"}}>
         <section className="content">
           <div className="container-fluid">
             <div className="row">

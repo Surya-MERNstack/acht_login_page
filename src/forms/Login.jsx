@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
 import axios from "axios";
-
+import animation from "../img/animation.gif";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
@@ -17,8 +17,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
-
-
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -55,27 +54,31 @@ const Login = () => {
   };
 
   useEffect(() => {
-    axios.get('https://petals.ath.cx/test/login.jsp')
-    .then((response) => setNoUsername(response.data.error.username))
+    axios
+      .get("https://petals.ath.cx/test/login.jsp")
+      .then((response) => setNoUsername(response.data.error.username));
 
-    axios.get('https://petals.ath.cx/test/login.jsp')
-    .then((response) => setNoPassword(response.data.error.password))
+    axios
+      .get("https://petals.ath.cx/test/login.jsp")
+      .then((response) => setNoPassword(response.data.error.password));
 
-    axios.get('https://petals.ath.cx/test/login.jsp?username=test&password=test')
-    .then((response) => setPassworLength(response.data.error.password))
+    axios
+      .get("https://petals.ath.cx/test/login.jsp?username=test&password=test")
+      .then((response) => setPassworLength(response.data.error.password));
 
-    axios.get('https://petals.ath.cx/test/login.jsp?username=test&password=test')
-    .then((response) => setUsernameLength(response.data.error.username))
-  })
+    axios
+      .get("https://petals.ath.cx/test/login.jsp?username=test&password=test")
+      .then((response) => setUsernameLength(response.data.error.username));
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === ""){
-      return toast.error(NoUsername)
+    if (email === "") {
+      return toast.error(NoUsername);
     }
-      
-    if(password === "") {
+
+    if (password === "") {
       return toast.error(NoPassword);
     }
 
@@ -86,17 +89,16 @@ const Login = () => {
     if (password.length < 5) {
       return toast.error(passwordLength);
     }
-
+    setLoading(true);
     toast.success("Login Successfully!!!");
-    navigate("/home");
-    console.log("clicked");
+    setTimeout(() => {
+      navigate("/home");
+    }, 2000);
   };
 
-
-  
   return (
-    <div className="p-3 my-5 fluid " style={{backgroundImage: "radial-gradient(circle, #202047 0, #020917 100%)"}}>
-      <div className="row mx-4" >
+    <div className="p-3  fluid  conatiner">
+      <div className="row " style={{ marginTop: "8rem" }}>
         <div className="col-xs-12 col-md-6 mt-auto img-ani">
           <img
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
@@ -105,7 +107,10 @@ const Login = () => {
           />
         </div>
 
-        <div className="col-xs-12 col-md-6 form-ani" style={{ marginTop: "4rem" , borderRadius : "15px"}}>
+        <div
+          className="col-xs-12 col-md-6 form-ani"
+          style={{ marginTop: "4rem", borderRadius: "15px" }}
+        >
           <div className="fw-semibold img-ani">
             <h2
               style={{
@@ -126,13 +131,17 @@ const Login = () => {
                   <label
                     htmlFor="formControlLgEmail"
                     className="form-label fw-semibold"
-                    style={{ fontSize: "1rem"}}
+                    style={{ fontSize: "1rem" }}
                   >
                     Username
                   </label>
                   <input
                     className="form-control form-control-lg"
-                    style={{ padding: "0.5rem", width: "70%" }}
+                    style={{
+                      padding: "0.5rem",
+                      width: "70%",
+                      fontSize: "1rem",
+                    }}
                     id="formControlLgEmail"
                     type="text"
                     value={email}
@@ -155,7 +164,11 @@ const Login = () => {
                     <input
                       className="form-control form-a form-control-lg"
                       id="formControlLgPassword"
-                      style={{ padding: "0.5rem", width: "70%"}}
+                      style={{
+                        padding: "0.5rem",
+                        width: "70%",
+                        fontSize: "1rem",
+                      }}
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={handlePasswordChange}
@@ -173,12 +186,11 @@ const Login = () => {
                   <div className="mt-2">
                     <p>
                       <Link
-                        to="/"
+                        to="/forgotpassword"
                         style={{
-                          color: "black",
                           fontFamily: "arial",
                           fontSize: "1rem",
-                          color: "#fff",
+                          color: "dodgerblue",
                         }}
                       >
                         Forgot Password?
@@ -190,10 +202,16 @@ const Login = () => {
               <div className="col-xs-12 d-flex justify-content-left mt-2">
                 <button
                   className="w-50 rounded btn-hover-effect"
-                  style={{fontSize : "1.2rem",height:"2.2rem",padding:"3px"}}
+                  style={{
+                    fontSize: "1.2rem",
+                    height: "2.4rem",
+                    padding: "3px",
+                    fontWeight: "500",
+                    backgroundColor: "green",
+                  }}
                   type="submit"
                 >
-                  SIGN IN
+                  {loading ? "Loading..." : "SIGN IN"}
                 </button>
               </div>
             </form>
@@ -203,7 +221,10 @@ const Login = () => {
                 style={{ fontSize: "1.1rem" }}
               >
                 <p className="fw-semibold text-white">
-                  Dont have an account ? <Link to="/" style={{textDecoration :"underline"}}>Sign Up</Link>
+                  Dont have an account ?{" "}
+                  <Link to="/signup" style={{ textDecoration: "underline" }}>
+                    Sign Up
+                  </Link>
                 </p>
               </div>
             </div>

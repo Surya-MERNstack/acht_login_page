@@ -128,7 +128,7 @@ export const Aside = () => {
               </li>
               <li className="nav-header">EXAMPLES</li>
               <li className="nav-item">
-                <Link to="calendar" className="nav-link">
+                <Link to="/calendar" className="nav-link">
                   <i className="nav-icon far fa-calendar-alt"></i>
                   <p>
                     Calendar
@@ -137,13 +137,13 @@ export const Aside = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="gallery" className="nav-link">
+                <Link to="/gallery" className="nav-link">
                   <i className="nav-icon far fa-image"></i>
                   <p>Gallery</p>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="kanban" className="nav-link">
+                <Link to="/kanban" className="nav-link">
                   <i className="nav-icon fas fa-columns"></i>
                   <p>Kanban Board</p>
                 </Link>
