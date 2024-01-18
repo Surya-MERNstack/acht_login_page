@@ -1,10 +1,9 @@
 import React , { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BiShow, BiHide } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ForgotPassword.css";
-import axios from "axios";
+import axios from "axios"; 
 
 export const ForgotPassword = () => {
 
