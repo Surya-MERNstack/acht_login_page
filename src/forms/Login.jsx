@@ -99,7 +99,7 @@ const Login = () => {
   return (
     <div className="p-3  fluid  conatiner">
       <div className="row " style={{ marginTop: "8rem" }}>
-        <div className="col-xs-12 col-md-6 mt-auto img-ani">
+        <div className="col-xs-12 col-md-6 =mt-4 img-ani">
           <img
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
             className="img-fluid"
